@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terms of Use — myIPTV</title>
+<meta name="description" content="myIPTV — Terms of Use">
+<link rel="stylesheet" href="_shared.css">
+</head>
+<body>
+
+<header>
+    <a class="brand" href="./">
+        <span class="brand-mark">m</span>
+        <span>myIPTV</span>
+    </a>
+    <div class="lang-toggle" role="tablist">
+        <button class="active" onclick="setLang('en')">EN</button>
+        <button onclick="setLang('pt')">PT</button>
+    </div>
+</header>
+
+<!-- ============================== ENGLISH ============================== -->
+<section lang="en">
+    <h1>Terms of Use</h1>
+    <p class="subtitle">Last updated: 2026</p>
+
+    <h2>1. Nature of the app</h2>
+    <p>myIPTV is a media player. It is not a television service. We do not provide, distribute, or host channels, movies, series, or any other audiovisual content. The app plays only the media sources (M3U, Xtream Codes, or local files) that the user voluntarily adds.</p>
+
+    <h2>2. User responsibility</h2>
+    <p>You are solely responsible for:</p>
+    <ul>
+        <li>Ensuring you hold the legal right to access and play any content you add to the app.</li>
+        <li>Choosing and contracting with your IPTV or M3U playlist provider.</li>
+        <li>Complying with the copyright laws of your jurisdiction.</li>
+    </ul>
+    <p>We disclaim all liability for third-party content played through the app.</p>
+
+    <h2>3. Third-party metadata</h2>
+    <p>When you enable metadata enrichment, the app queries catalogue services (TMDB, TVDB and/or OMDB) for posters, synopses, cast, and ratings. That data belongs to its respective rights holders and is presented to you under their own terms. You may disable enrichment at any time in Settings.</p>
+
+    <h2>4. No warranty</h2>
+    <p>The app is provided "as is", without warranty of any kind. We do not guarantee the availability, accuracy, or quality of any content you add.</p>
+
+    <h2>5. Changes</h2>
+    <p>We may update these terms. The version in force is always the one displayed in this page and in the in-app Terms screen of the installed version of the app.</p>
+
+    <h2>6. Contact</h2>
+    <p><a href="mailto:helder.daio@gmail.com">helder.daio@gmail.com</a></p>
+</section>
+
+<!-- ============================== PORTUGUÊS ============================ -->
+<section lang="pt">
+    <h1>Termos de Utilização</h1>
+    <p class="subtitle">Última actualização: 2026</p>
+
+    <h2>1. Natureza da aplicação</h2>
+    <p>myIPTV é um leitor multimédia. Não é um serviço de televisão. Não fornecemos, distribuímos ou alojamos canais, filmes, séries ou qualquer outro conteúdo audiovisual. A aplicação reproduz exclusivamente fontes de média (M3U, Xtream Codes ou ficheiros locais) que o utilizador adiciona voluntariamente.</p>
+
+    <h2>2. Responsabilidade do utilizador</h2>
+    <p>És inteiramente responsável por:</p>
+    <ul>
+        <li>Garantir que possuis o direito legal de aceder e reproduzir qualquer conteúdo que adicionas à aplicação.</li>
+        <li>A escolha e a relação contratual com o teu fornecedor de IPTV ou de listas M3U.</li>
+        <li>Cumprir as leis aplicáveis na tua jurisdição em matéria de direitos de autor.</li>
+    </ul>
+    <p>Não nos responsabilizamos por conteúdo de terceiros reproduzido através da app.</p>
+
+    <h2>3. Metadados de terceiros</h2>
+    <p>Quando ativas o enriquecimento de metadados, a app consulta serviços de catálogo (TMDB, TVDB e/ou OMDB) para obter cartazes, sinopses, elenco e classificações. Esses dados pertencem aos respectivos detentores e são-te apresentados ao abrigo das suas próprias condições. Podes desativar este enriquecimento em qualquer momento nas Definições.</p>
+
+    <h2>4. Sem garantia</h2>
+    <p>A aplicação é fornecida "tal como está", sem garantia de qualquer espécie. Não garantimos a disponibilidade, exactidão ou qualidade do conteúdo que o utilizador adicionar.</p>
+
+    <h2>5. Alterações</h2>
+    <p>Podemos atualizar estes termos. A versão em vigor é sempre a apresentada nesta página e no ecrã de Termos in-app da versão instalada da app.</p>
+
+    <h2>6. Contacto</h2>
+    <p><a href="mailto:helder.daio@gmail.com">helder.daio@gmail.com</a></p>
+</section>
+
+<footer>
+    <a href="./">Home</a> · <a href="privacy.html">Privacy</a> · <a href="mailto:helder.daio@gmail.com">helder.daio@gmail.com</a>
+</footer>
+
+<script>
+function setLang(l) {
+    document.documentElement.setAttribute('data-lang', l);
+    document.documentElement.setAttribute('lang', l);
+    document.querySelectorAll('.lang-toggle button').forEach(b =>
+        b.classList.toggle('active', b.textContent.toLowerCase() === l)
+    );
+    try { localStorage.setItem('myiptv-lang', l); } catch (_) {}
+}
+(function () {
+    var saved;
+    try { saved = localStorage.getItem('myiptv-lang'); } catch (_) {}
+    if (saved === 'pt') setLang('pt');
+}());
+</script>
+</body>
+</html>
