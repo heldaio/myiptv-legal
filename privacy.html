@@ -1,146 +1,215 @@
-<!doctype html>
-<html lang="en" data-lang="en">
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Privacy Policy — myIPTV</title>
-    <meta name="description" content="myIPTV — Privacy Policy">
-    <link rel="stylesheet" href="./shared.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — myIPTV</title>
+<style>
+  :root {
+    --bg: #0a0a0c;
+    --fg: #e8e8ea;
+    --muted: #9a9aa0;
+    --accent: #80d800;
+    --card: #18181c;
+    --border: #2a2a30;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 32px 20px 80px; }
+  h1 { font-size: 28px; margin: 0 0 8px; }
+  h2 { font-size: 20px; margin: 32px 0 12px; color: var(--accent); }
+  h3 { font-size: 16px; margin: 20px 0 8px; }
+  .meta { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
+  a { color: var(--accent); }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); }
+  th { color: var(--muted); font-weight: 600; }
+  .lang-switch { display: flex; gap: 12px; justify-content: flex-end; margin-bottom: 24px; font-size: 14px; }
+  .lang-switch a { padding: 6px 12px; background: var(--card); border-radius: 6px; text-decoration: none; }
+  ul { padding-left: 22px; }
+  li { margin-bottom: 4px; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+  footer { color: var(--muted); font-size: 13px; text-align: center; margin-top: 48px; }
+</style>
 </head>
-
 <body>
+<main>
 
-    <header>
-        <a class="brand" href="./">
-            <span class="brand-mark">m</span>
-            <span>myIPTV</span>
-        </a>
-        <div class="lang-toggle" role="tablist">
-            <button class="active" onclick="setLang('en')">EN</button>
-            <button onclick="setLang('pt')">PT</button>
-        </div>
-    </header>
+<div class="lang-switch">
+  <a href="#en">EN</a>
+  <a href="#pt">PT</a>
+</div>
 
-    <!-- ============================== ENGLISH ============================== -->
-    <section lang="en">
-        <h1>Privacy Policy</h1>
-        <p class="subtitle">Last updated: 2026</p>
+<!-- ENGLISH -->
+<section id="en">
 
-        <h2>1. Summary</h2>
-        <p>We do not collect personal data about you. We do not run servers that store your identity, history,
-            playlists, or credentials. We do not use analytics. We do not sell or share data with advertisers.</p>
+<h1>Privacy Policy — myIPTV</h1>
+<p class="meta">Last updated: 22 May 2026</p>
 
-        <h2>2. Data stored on your device</h2>
-        <p>The app stores on your own iPhone/iPad:</p>
-        <ul>
-            <li>Playlists, Xtream credentials, and EPG you add.</li>
-            <li>Favourites, playback history, and local profile.</li>
-            <li>Preferences (language, video quality, etc.).</li>
-        </ul>
-        <p>If you enabled iCloud, some of this data (favourites, profile, TMDB mappings) syncs between your devices
-            through Apple's iCloud, governed by Apple's privacy policy. We do not access your iCloud.</p>
+<p>myIPTV ("the app") is developed and operated by <strong>Hélder Daio</strong> ("we", "us"). This policy explains what data the app processes, where it is stored, and which third-party services it interacts with. By using myIPTV you agree to this policy.</p>
 
-        <h2>3. Third-party services you may enable</h2>
-        <ul>
-            <li><strong>TMDB / TVDB / OMDB</strong> — consulted when you play or open details for movies/series, to show
-                posters, synopses, and ratings. These services receive the title of the work and your IP. They do not
-                receive personal information about you.</li>
-            <li><strong>Trakt.tv (optional)</strong> — contacted only if you authorize the connection in Settings.</li>
-            <li><strong>Your IPTV provider</strong> — all playback flows directly from your device to the stream URL you
-                configured.</li>
-        </ul>
+<h2>1. Summary</h2>
+<ul>
+  <li>myIPTV is a <strong>Bring-Your-Own-Content</strong> media player. It ships <strong>no media content</strong> and <strong>no preloaded playlists</strong>.</li>
+  <li>We do <strong>not</strong> sell, rent, or share your personal data with advertisers.</li>
+  <li>We do <strong>not</strong> collect analytics or telemetry. No usage data leaves your device through our infrastructure.</li>
+  <li>Your playlists, credentials, and watch history are stored <strong>on your device</strong> and (if you have iCloud enabled on your Apple ID) synced privately through <strong>Apple iCloud Key-Value Storage</strong> under your own account. We never see this data.</li>
+</ul>
 
-        <h2>4. Metadata proxy</h2>
-        <p>By default, TVDB and OMDB requests pass through a proxy service operated by us (Cloudflare Workers) that only
-            rewrites the URL and injects our API key. This proxy does not store your requests, does not log your IP, and
-            does not associate requests with any identity. TMDB only works if you supply your own API key in Settings —
-            those requests go directly from your device to TMDB.</p>
+<h2>2. Data Processed Locally on Your Device</h2>
+<p>The following items live on your device. Sensitive items (credentials, PINs) are stored in the iOS <strong>Keychain</strong>; the rest in <code>UserDefaults</code>.</p>
+<table>
+<thead><tr><th>Item</th><th>Storage</th><th>Synced via iCloud KVS</th></tr></thead>
+<tbody>
+<tr><td>Playlist URLs (M3U / Xtream)</td><td>Keychain</td><td>No</td></tr>
+<tr><td>Xtream username / password</td><td>Keychain</td><td>No</td></tr>
+<tr><td>Trakt OAuth token</td><td>Keychain</td><td>No</td></tr>
+<tr><td>TMDB API key (if you provide one)</td><td>Keychain</td><td>No</td></tr>
+<tr><td>Parental Control PIN (Kids Mode)</td><td>Keychain</td><td>No</td></tr>
+<tr><td>Watch progress ("Continue Watching")</td><td>UserDefaults</td><td>Yes</td></tr>
+<tr><td>Favourite channels / movies / series</td><td>UserDefaults</td><td>Yes</td></tr>
+<tr><td>User profile (display name, avatar)</td><td>UserDefaults</td><td>Yes</td></tr>
+<tr><td>Watch-time statistics</td><td>UserDefaults</td><td>Yes</td></tr>
+<tr><td>EPG cache</td><td>UserDefaults</td><td>No</td></tr>
+</tbody>
+</table>
+<p>When iCloud sync is active, the iCloud-marked items above leave your device only via Apple's encrypted iCloud service, <strong>bound to your Apple ID</strong>. We have no access to your iCloud data.</p>
 
-        <h2>5. Data sharing</h2>
-        <p>Never. There are no third parties we could share data with, because we hold no data about you.</p>
+<h2>3. Third-Party Services</h2>
+<p>myIPTV communicates with the following services <strong>only when used or configured by you</strong>:</p>
+<ul>
+  <li><strong>Your IPTV provider</strong> — the M3U/Xtream URLs you enter point at servers operated by third parties. We have no relationship with them. Connection is direct from your device.</li>
+  <li><strong>Apple iCloud</strong> — Key-Value Storage for the sync items listed above. Subject to <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a>.</li>
+  <li><strong>TMDB</strong> (<a href="https://www.themoviedb.org/">themoviedb.org</a>) — used for movie/series metadata only if you supply your own API key. Subject to <a href="https://www.themoviedb.org/terms-of-use">TMDB's terms</a>.</li>
+  <li><strong>OMDB</strong> (<a href="https://www.omdbapi.com/">omdbapi.com</a>) — used for IMDb/Rotten Tomatoes/Metacritic ratings, when enabled. Requests are proxied through our Cloudflare Worker which does not log request bodies.</li>
+  <li><strong>TVDB</strong> (<a href="https://thetvdb.com/">thetvdb.com</a>) — alternative metadata source. Proxied through our Cloudflare Worker.</li>
+  <li><strong>Trakt.tv</strong> (<a href="https://trakt.tv/">trakt.tv</a>) — only if you connect your Trakt account. Watch progress is sent to Trakt under your account. Subject to <a href="https://trakt.tv/privacy">Trakt's Privacy Policy</a>.</li>
+  <li><strong>IPTV-Org</strong> — channel logos are fetched from their public CDN. They may see your IP address as part of standard HTTP delivery.</li>
+</ul>
 
-        <h2>6. Children</h2>
-        <p>The app includes a PIN-protected Kids Mode. No additional data is collected for minor users.</p>
+<h2>4. Analytics and Tracking</h2>
+<p>myIPTV does <strong>not</strong> collect analytics. No usage metrics, no event signals, no third-party SDK is configured to receive data from your device. The app does <strong>not</strong> use the iOS App Tracking Transparency framework because there is no tracking to disclose. We do not access the device advertising identifier (IDFA).</p>
+<p>The only data category declared in our <code>PrivacyInfo.xcprivacy</code> manifest is <strong>Crash Data</strong>, which is delivered by iOS to Apple (and visible to us in Xcode Organizer) only if you opted in to share analytics with app developers at iOS setup. It is not used for tracking and is not linked to your identity.</p>
 
-        <h2>7. Changes</h2>
-        <p>Updates to this policy appear in this page and in the in-app Privacy screen in future versions of the app.
-        </p>
+<h2>5. Children's Privacy</h2>
+<p>myIPTV is not directed at children under 13. We do not knowingly collect data from children. The app includes an optional <strong>Kids Mode</strong> with PIN protection that hides channel categories tagged as adult (XXX, +18, Erotic, Porn, etc.) from M3U group titles.</p>
 
-        <h2>8. Contact</h2>
-        <p><a href="mailto:support@hdaio.com">support@hdaio.com</a></p>
-    </section>
+<h2>6. Your Rights</h2>
+<p>You can:</p>
+<ul>
+  <li><strong>Delete all local data</strong> by removing the app (iOS Settings → General → iPhone Storage → myIPTV → Delete App).</li>
+  <li><strong>Disable iCloud sync</strong> for the app under iOS Settings → [Your Name] → iCloud.</li>
+  <li><strong>Disable crash sharing</strong> at the operating-system level via iOS Settings → Privacy &amp; Security → Analytics &amp; Improvements.</li>
+  <li><strong>Disconnect Trakt</strong> under the in-app Settings → Trakt.tv → Disconnect.</li>
+  <li><strong>Contact us</strong> to request any further information at the address below.</li>
+</ul>
+<p>Under GDPR (EEA users) and CCPA (California users), you additionally have the right to access, correct, port, or erase your data. To exercise these rights, contact us.</p>
 
-    <!-- ============================== PORTUGUÊS ============================ -->
-    <section lang="pt">
-        <h1>Política de Privacidade</h1>
-        <p class="subtitle">Última actualização: 2026</p>
+<h2>7. Data Retention</h2>
+<ul>
+  <li>Local data persists until you delete it or uninstall the app.</li>
+  <li>iCloud KVS data is retained by Apple under your Apple ID lifecycle.</li>
+</ul>
 
-        <h2>1. Resumo</h2>
-        <p>Não recolhemos dados pessoais sobre ti. Não temos servidores que guardem a tua identidade, histórico, listas
-            ou credenciais. Não usamos analytics. Não vendemos nem partilhamos dados com anunciantes.</p>
+<h2>8. Security</h2>
+<p>Credentials and sensitive tokens are stored exclusively in the iOS Keychain, encrypted at rest by the operating system. Network communication with third-party services uses HTTPS where the provider supports it. IPTV stream URLs are often HTTP; this is a constraint of the IPTV ecosystem, not a design choice.</p>
 
-        <h2>2. Dados guardados no teu dispositivo</h2>
-        <p>A app guarda no teu próprio iPhone/iPad:</p>
-        <ul>
-            <li>Listas, credenciais Xtream e EPG que tu adicionas.</li>
-            <li>Favoritos, histórico de reprodução e perfil local.</li>
-            <li>Preferências (idioma, qualidade de vídeo, etc.).</li>
-        </ul>
-        <p>Se ativaste o iCloud, alguns destes dados (favoritos, perfil, mapeamento de TMDB) sincronizam entre os teus
-            dispositivos via iCloud, que pertence à Apple e segue a política de privacidade da Apple. Nós não acedemos a
-            esse iCloud.</p>
+<h2>9. Changes to This Policy</h2>
+<p>We may update this policy. Material changes will be reflected in the "Last updated" date above. Continued use of the app after the update constitutes acceptance.</p>
 
-        <h2>3. Serviços de terceiros que podes ativar</h2>
-        <ul>
-            <li><strong>TMDB / TVDB / OMDB</strong> — consultados quando reproduzes ou abres detalhes de filmes/séries,
-                para mostrar cartazes, sinopses e classificações. Estes serviços recebem o título da obra e o teu IP.
-                Não recebem informação pessoal tua.</li>
-            <li><strong>Trakt.tv (opcional)</strong> — só é contactado se autorizares a ligação nas Definições.</li>
-            <li><strong>O teu fornecedor de IPTV</strong> — toda a reprodução passa diretamente do teu dispositivo para
-                a URL de stream que tu configuraste.</li>
-        </ul>
+<h2>10. Contact</h2>
+<p><strong>Hélder Daio</strong><br>
+Email: <a href="mailto:support@hdaio.com">support@hdaio.com</a></p>
 
-        <h2>4. Proxy de metadados</h2>
-        <p>Por defeito, os pedidos a TVDB e OMDB passam por um serviço proxy operado por nós (Cloudflare Workers) que
-            apenas reescreve a URL e injeta a nossa chave de API. Este proxy não guarda os teus pedidos, não regista o
-            teu IP e não associa pedidos a nenhuma identidade. O TMDB só funciona se forneceres a tua própria chave nas
-            Definições — esses pedidos vão directamente do teu dispositivo para a TMDB.</p>
+</section>
 
-        <h2>5. Partilha de dados</h2>
-        <p>Nunca. Não há terceiros para quem possamos partilhar dados, porque não temos dados teus.</p>
+<hr>
 
-        <h2>6. Crianças</h2>
-        <p>A app inclui Modo Crianças com PIN. Nenhum dado adicional é recolhido para utilizadores menores.</p>
+<!-- PORTUGUÊS -->
+<section id="pt">
 
-        <h2>7. Alterações</h2>
-        <p>Atualizações a esta política aparecem nesta página e no ecrã de Privacidade in-app em futuras versões da app.
-        </p>
+<h1>Política de Privacidade — myIPTV</h1>
+<p class="meta">Última atualização: 22 de maio de 2026</p>
 
-        <h2>8. Contacto</h2>
-        <p><a href="mailto:support@hdaio.com">support@hdaio.com</a></p>
-    </section>
+<p>A myIPTV ("a app") é desenvolvida e operada por <strong>Hélder Daio</strong> ("nós"). Esta política explica que dados a app processa, onde ficam guardados e com que serviços terceiros comunica. Ao usar a myIPTV concordas com esta política.</p>
 
-    <footer>
-        <a href="./">Home</a> · <a href="terms.html">Terms</a> · <a
-            href="mailto:support@hdaio.com">support@hdaio.com</a>
-    </footer>
+<h2>1. Resumo</h2>
+<ul>
+  <li>A myIPTV é um player <strong>Bring-Your-Own-Content</strong>. <strong>Não fornece nenhum conteúdo de média</strong> nem <strong>traz listas pré-carregadas</strong>.</li>
+  <li><strong>Não</strong> vendemos, alugamos nem partilhamos os teus dados pessoais com anunciantes.</li>
+  <li><strong>Não</strong> recolhemos analytics nem telemetria. Nenhuns dados de utilização saem do teu dispositivo através da nossa infraestrutura.</li>
+  <li>As tuas playlists, credenciais e histórico ficam <strong>no teu dispositivo</strong> e (se tiveres iCloud ativo no teu Apple ID) sincronizam de forma privada via <strong>Apple iCloud Key-Value Storage</strong> sob a tua própria conta. Nós nunca vemos estes dados.</li>
+</ul>
 
-    <script>
-        function setLang(l) {
-            document.documentElement.setAttribute('data-lang', l);
-            document.documentElement.setAttribute('lang', l);
-            document.querySelectorAll('.lang-toggle button').forEach(b =>
-                b.classList.toggle('active', b.textContent.toLowerCase() === l)
-            );
-            try { localStorage.setItem('myiptv-lang', l); } catch (_) { }
-        }
-        (function () {
-            var saved;
-            try { saved = localStorage.getItem('myiptv-lang'); } catch (_) { }
-            if (saved === 'pt') setLang('pt');
-        }());
-    </script>
+<h2>2. Dados Processados Localmente no Teu Dispositivo</h2>
+<p>Os itens abaixo ficam no teu dispositivo. Os sensíveis (credenciais, PINs) são guardados no <strong>Keychain</strong> do iOS; os restantes em <code>UserDefaults</code>.</p>
+<table>
+<thead><tr><th>Item</th><th>Armazenamento</th><th>Sincronizado via iCloud KVS</th></tr></thead>
+<tbody>
+<tr><td>URLs de playlists (M3U / Xtream)</td><td>Keychain</td><td>Não</td></tr>
+<tr><td>Utilizador / palavra-passe Xtream</td><td>Keychain</td><td>Não</td></tr>
+<tr><td>Token OAuth do Trakt</td><td>Keychain</td><td>Não</td></tr>
+<tr><td>TMDB API key (se a forneceres)</td><td>Keychain</td><td>Não</td></tr>
+<tr><td>PIN do Controlo Parental (Kids Mode)</td><td>Keychain</td><td>Não</td></tr>
+<tr><td>Progresso de visualização ("Continuar a Ver")</td><td>UserDefaults</td><td>Sim</td></tr>
+<tr><td>Canais / filmes / séries favoritos</td><td>UserDefaults</td><td>Sim</td></tr>
+<tr><td>Perfil de utilizador (nome, avatar)</td><td>UserDefaults</td><td>Sim</td></tr>
+<tr><td>Estatísticas de visualização</td><td>UserDefaults</td><td>Sim</td></tr>
+<tr><td>Cache de EPG</td><td>UserDefaults</td><td>Não</td></tr>
+</tbody>
+</table>
+<p>Quando a sincronização iCloud está ativa, os itens marcados acima saem do dispositivo apenas via serviço iCloud encriptado da Apple, <strong>ligados ao teu Apple ID</strong>. Não temos acesso aos teus dados iCloud.</p>
+
+<h2>3. Serviços de Terceiros</h2>
+<p>A myIPTV comunica com os seguintes serviços <strong>apenas quando os usas ou configuras</strong>:</p>
+<ul>
+  <li><strong>O teu provedor de IPTV</strong> — os URLs M3U/Xtream que introduzes apontam para servidores operados por terceiros. Não temos qualquer relação com eles. A ligação é direta do teu dispositivo.</li>
+  <li><strong>Apple iCloud</strong> — Key-Value Storage para os itens listados acima. Sujeito à <a href="https://www.apple.com/legal/privacy/">Política de Privacidade da Apple</a>.</li>
+  <li><strong>TMDB</strong> (<a href="https://www.themoviedb.org/">themoviedb.org</a>) — usado para metadata de filmes/séries apenas se forneceres a tua API key. Sujeito aos <a href="https://www.themoviedb.org/terms-of-use">termos do TMDB</a>.</li>
+  <li><strong>OMDB</strong> (<a href="https://www.omdbapi.com/">omdbapi.com</a>) — usado para ratings IMDb/Rotten Tomatoes/Metacritic, quando ativado. Pedidos passam pelo nosso Cloudflare Worker que não regista conteúdos dos pedidos.</li>
+  <li><strong>TVDB</strong> (<a href="https://thetvdb.com/">thetvdb.com</a>) — fonte alternativa de metadata. Proxied através do nosso Cloudflare Worker.</li>
+  <li><strong>Trakt.tv</strong> (<a href="https://trakt.tv/">trakt.tv</a>) — apenas se ligares a tua conta Trakt. O progresso é enviado ao Trakt sob a tua conta. Sujeito à <a href="https://trakt.tv/privacy">Política de Privacidade do Trakt</a>.</li>
+  <li><strong>IPTV-Org</strong> — os logos dos canais são obtidos do CDN público deles. Podem ver o teu IP no decurso de entrega HTTP normal.</li>
+</ul>
+
+<h2>4. Analytics e Tracking</h2>
+<p>A myIPTV <strong>não</strong> recolhe analytics. Não há métricas de utilização, sinais de eventos, nem SDK terceiro configurado para receber dados do teu dispositivo. A app <strong>não</strong> usa o framework App Tracking Transparency da Apple porque não há tracking a divulgar. Não acedemos ao identificador de publicidade do dispositivo (IDFA).</p>
+<p>A única categoria declarada no nosso <code>PrivacyInfo.xcprivacy</code> é <strong>Crash Data</strong>, entregue pelo iOS à Apple (e visível para nós no Xcode Organizer) apenas se ativaste a partilha de analytics com developers no setup do iOS. Não é usada para tracking nem está ligada à tua identidade.</p>
+
+<h2>5. Privacidade de Crianças</h2>
+<p>A myIPTV não é dirigida a crianças com menos de 13 anos. Não recolhemos conscientemente dados de crianças. A app inclui um <strong>Kids Mode</strong> opcional, protegido por PIN, que oculta categorias de canais marcadas como adultas (XXX, +18, Erotic, Porn, etc.) nos M3U.</p>
+
+<h2>6. Os Teus Direitos</h2>
+<p>Podes:</p>
+<ul>
+  <li><strong>Apagar todos os dados locais</strong> removendo a app (iOS Definições → Geral → Armazenamento do iPhone → myIPTV → Apagar App).</li>
+  <li><strong>Desativar a sincronização iCloud</strong> para a app em iOS Definições → [O Teu Nome] → iCloud.</li>
+  <li><strong>Desativar o envio de crashes</strong> ao nível do sistema via iOS Definições → Privacidade &amp; Segurança → Análise &amp; Melhorias.</li>
+  <li><strong>Desligar o Trakt</strong> dentro da app em Definições → Trakt.tv → Desligar.</li>
+  <li><strong>Contactar-nos</strong> para qualquer informação adicional no endereço abaixo.</li>
+</ul>
+<p>Ao abrigo do RGPD (utilizadores no EEE) e do CCPA (utilizadores na Califórnia), tens adicionalmente o direito de aceder, corrigir, portar ou eliminar os teus dados. Para exercer estes direitos, contacta-nos.</p>
+
+<h2>7. Retenção de Dados</h2>
+<ul>
+  <li>Dados locais persistem até os apagares ou desinstalares a app.</li>
+  <li>Dados em iCloud KVS são retidos pela Apple sob o ciclo de vida do teu Apple ID.</li>
+</ul>
+
+<h2>8. Segurança</h2>
+<p>Credenciais e tokens sensíveis ficam exclusivamente no Keychain do iOS, encriptados em repouso pelo sistema operativo. As comunicações de rede usam HTTPS sempre que o serviço o suporta. URLs de streams IPTV são frequentemente HTTP — é uma restrição do ecossistema IPTV, não uma decisão de design.</p>
+
+<h2>9. Alterações a Esta Política</h2>
+<p>Podemos atualizar esta política. Alterações materiais ficarão refletidas na data de "Última atualização" no topo. O uso contínuo da app após a atualização constitui aceitação.</p>
+
+<h2>10. Contacto</h2>
+<p><strong>Hélder Daio</strong><br>
+Email: <a href="mailto:support@hdaio.com">support@hdaio.com</a></p>
+
+</section>
+
+<footer>© 2026 Hélder Daio</footer>
+
+</main>
 </body>
-
 </html>
